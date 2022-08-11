@@ -1,0 +1,33 @@
+def letterChange(str)
+  alpha_list = ('a'..'z').to_a
+  vowels_list = ['a','e','i','o','u']
+
+  # print alpha_list
+  
+  next_letter = str.downcase.split("").each do |letter|
+    if alpha_list.include?(letter)
+      if letter == 'z'
+        letter.sub!('z','a')
+      else
+        letter.next!
+      end
+    else 
+      letter
+    end
+  end  
+  
+  next_letter.each do |vowel|
+    if vowels_list.include?(vowel)
+      vowel.capitalize!
+    end
+  end
+  
+  str = next_letter.join("")
+  return str
+end
+  
+
+
+
+print letterChange("fun timzes!*&^$ a z d h n t")
+
